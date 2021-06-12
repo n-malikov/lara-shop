@@ -1,8 +1,16 @@
 @include('components.header')
 
+@php
+    $names = [
+        'phones' => 'Мобильные телефоны',
+        'portable' => 'Портативная техника',
+        'appliances' => 'Бытовая техника',
+    ];
+@endphp
+
 <div class="container">
     <div class="content">
-        <h1>Категории</h1>
+        <h1>Категория: {{ $names[ $category ] }}</h1>
         <br>
         <a href="/phones" class="button">Мобильные телефоны</a>
         <br><br>
