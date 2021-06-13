@@ -1,9 +1,9 @@
-@include('components.header')
+@extends('master')
 
-<div class="container">
-    <div class="content">
-        <h1>Продукт</h1>
-        <br>
-        {{ $product }}
-    </div>
-</div>
+@section('title', $product . ' - Laravel')
+
+@section('content')
+    <h1>Продукт</h1>
+    <br>
+    {{ $product }}
+@endsection
