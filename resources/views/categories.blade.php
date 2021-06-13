@@ -4,10 +4,10 @@
     <div class="content">
         <h1>Категории</h1>
         <br>
-        <a href="/phones" class="button">Мобильные телефоны</a>
-        <br><br>
-        <a href="/portable" class="button">Портативная техника</a>
-        <br><br>
-        <a href="/appliances" class="button">Бытовая техника</a>
+        @foreach($categories as $category)
+            <a href="/{{ $category->code }}" class="button">{{ $category->name }}</a>
+            {{ $category->description }}
+            <br><br>
+        @endforeach
     </div>
 </div>

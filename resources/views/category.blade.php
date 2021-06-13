@@ -10,8 +10,10 @@
 
 <div class="container">
     <div class="content">
-        <h1>Категория: {{ $names[ $category ] }}</h1>
+        <h1>Категория: {{ $category->name }}</h1>
         <br>
+        {{ $category->description }}
+        <br><br>
         <a href="/phones" class="button">Мобильные телефоны</a>
         <br><br>
         <a href="/portable" class="button">Портативная техника</a>
