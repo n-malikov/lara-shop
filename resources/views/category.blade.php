@@ -7,5 +7,10 @@
     <br>
     {{ $category->description }}
     <br><br>
-    @include('card', ['category' => $category])
+    Товаров в категории: {{ $category->products->count() }}
+    <br><br>
+
+    @foreach($category->products as $product)
+        @include('card', compact('product'))
+    @endforeach
 @endsection
