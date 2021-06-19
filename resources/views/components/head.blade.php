@@ -1,3 +1,6 @@
+<head>
+<meta charset="utf-8" />
+<title>@yield('title')</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
     *{margin:0;padding:0;box-sizing:border-box;}
@@ -74,11 +77,4 @@
         box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.27);
     }
 </style>
-
-<div class="header">
-    <div class="container">
-        <a href="/">Главная</a>
-        <a href="/categories">Категории</a>
-        <a href="/product/vinni">Продукт</a>
-    </div>
-</div>
+</head>

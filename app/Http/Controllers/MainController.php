@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -11,18 +13,27 @@ class MainController extends Controller
         return view('index');
     }
 
-    public function categories()
+    public function shop()
     {
-        return view('categories');
+        $products = Product::get();
+        return view('shop', compact('products'));
     }
 
-    public function category($category)
+    public function categories()
+    {
+        $categories = Category::get();
+        return view('categories', compact('categories'));
+    }
+
+    public function category($code)
     {
         // dump($category);
+        $category = Category::where('code', $code)->first();
+        // dd($categoryObject);
         return view('category', compact('category'));
     }
 
-    public function product($product = 'кривая ссылка')
+    public function product($category, $product = 'кривая ссылка')
     {
         return view('product', ['product' => $product]);
     }
