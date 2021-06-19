@@ -1,13 +1,15 @@
 <br>
-<strong>{{ $product->name }}</strong>
+<a href="{{ route('product', [$product->category->code, $product->code]) }}"><strong>{{ $product->name }}</strong></a>
 <br>
 категория: {{ $product->category->name }}
 <br>
 цена: {{ $product->price }}
-<br>
-
-{{ route('product', [$product->category->code, $product->code]) }}
 
 
 <br><br>
+<form action="{{ route('basket-add', $product) }}" method="POST">
+    <button type="submit" class="button">В корзину</button>
+    @csrf
+</form>
+<br>
 <hr>
