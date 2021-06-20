@@ -88,3 +88,4 @@
     }
 </style>
 </head>
+{{-- \. /var/www/lara-shop.artello.ru/lara_shop.sql --}}
