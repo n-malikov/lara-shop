@@ -17,9 +17,10 @@ Route::get('/', 'MainController@index')->name('index');
 Route::get('/shop', 'MainController@shop')->name('shop');
 
 Route::get('/basket', 'BasketController@basket')->name('basket');
-Route::get('/basket/order', 'BasketController@basketOrder')->name('basket-order');
+Route::get('/basket/place', 'BasketController@basketPlace')->name('basket-place');
 Route::post('/basket/add/{id}', 'BasketController@basketAdd')->name('basket-add');
 Route::post('/basket/remove/{id}', 'BasketController@basketRemove')->name('basket-remove');
+Route::post('/basket/place', 'BasketController@basketConfirm')->name('basket-confirm'); // подтверждение заказа
 
 Route::get('/categories', 'MainController@categories')->name('categories');
 Route::get('/{category}', 'MainController@category')->name('category');

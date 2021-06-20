@@ -21,4 +21,18 @@ class Order extends Model
         }
         return $sum;
     }
+
+    public function saveOrder($name, $phone) // сохраняем заказ
+    {
+        if ($this->status == 0) { // только если еще не подтвержден
+            $this->name = $name;
+            $this->phone = $phone;
+            $this->status = 1;
+            $this->save();
+            session()->forget('orderId'); // удаляем сессию
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -61,6 +61,23 @@
         line-height: 35px;
     }
 
+    .text-right {
+        text-align: right;
+    }
+
+    input[type=text] {
+        display: block;
+        width: 100%;
+        max-width: 250px;
+        margin: 5px 0 10px;
+        padding: 10px 20px;
+        outline: none;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        font-size: 14px;
+        color: #212121;
+    }
+
     .button {
         display: inline-flex;
         padding: 0 20px;
@@ -85,6 +102,23 @@
         display: flex;
         align-items: center;
         padding: 0 15px;
+    }
+
+    .message {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #000;
+        text-align: center;
+    }
+    .message__success {
+        color: #3c763d;
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+    }
+    .message__warning {
+        color: #8a6d3b;
+        background-color: #fcf8e3;
+        border-color: #faebcc;
     }
 </style>
 </head>
