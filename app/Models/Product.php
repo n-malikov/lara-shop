@@ -8,13 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-    public function getCategory()
-    {
-        return $category = Category::find($this->category_id);
-    }
+//    public function getCategory()
+//    {
+//        return $category = Category::find($this->category_id);
+//    }
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function getPriceForCount() // подсчет общей суммы товара в корзине
+    {
+        if (!is_null($this->pivot)) {
+            return $this->pivot->count * $this->price;
+        }
+        return $this->price;
     }
 }
