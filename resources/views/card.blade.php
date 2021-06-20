@@ -8,7 +8,7 @@
 
 <br><br>
 <form action="{{ route('basket-add', $product) }}" method="POST">
-    <button type="submit" class="button">В корзину</button>
+    <button type="submit" class="button">Добавить в корзину</button>
     @csrf
 </form>
 <br>

@@ -76,5 +76,15 @@
     .button:hover {
         box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.27);
     }
+
+    .count-buttons {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .count-buttons__int {
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+    }
 </style>
 </head>
