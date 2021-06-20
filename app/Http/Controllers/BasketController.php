@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class BasketController extends Controller
@@ -16,9 +17,31 @@ class BasketController extends Controller
         return view('basket', compact('order'));
     }
 
-    public function basketOrder()
+    public function basketConfirm(Request $request) // подтверждение заказа
     {
-        return view('order');
+        $orderId = session('orderId'); // получаем id из сессии
+        $order = Order::find($orderId); // достаем из БД заказ из сессии
+        $success = $order->saveOrder($request->name, $request->phone); // сохраняем заказ
+
+        if ($success) {
+            session()->flash('success', 'Ваш заказ принят в обработку');
+        } else {
+            session()->flash('warning', 'Произошла ошибка');
+        }
+
+        // dd($request->all());
+        return redirect()->route('index');
+    }
+
+    public function basketPlace() // оформляем заказ
+    {
+        $orderId = session('orderId'); // получаем id из сессии
+        if (is_null($orderId)) {
+            return redirect()->route('index');
+        }
+        $order = Order::find($orderId); // достаем из БД заказ из сессии
+
+        return view('order', compact('order')); // передаем в шаблон
     }
 
     public function basketAdd($productID) // добавляем товар в корзину
@@ -40,6 +63,9 @@ class BasketController extends Controller
         } else {
             $order->products()->attach($productID); // если еще нет, то просто добавляем в заказ
         }
+
+        $product = Product::find($productID); // достаем товар
+        session()->flash('success', 'Добавлен товар: ' . $product->name); // выводим сообщение
 
         return redirect()->route('basket'); // перекидываем в корзину
     }
@@ -65,6 +91,9 @@ class BasketController extends Controller
         } else {
             $order->products()->attach($productID); // если еще нет, то просто добавляем в заказ
         }
+
+        $product = Product::find($productID); // достаем товар
+        session()->flash('warning', 'Удален товар: ' . $product->name); // выводим сообщение
 
         return redirect()->route('basket'); // перекидываем в корзину
     }

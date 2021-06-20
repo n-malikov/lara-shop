@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layouts.master')
 
 @section('title', 'Корзина - Laravel')
 
@@ -33,6 +33,10 @@
     @endforeach
 
     <br>
-    Итого: <strong>{{ $order->getFullPrice() }}</strong>
+    <div class="text-right">
+        Итого: <strong>{{ $order->getFullPrice() }}</strong>
+        <br><br>
+        <a href="{{ route('basket-place') }}" class="button">Формить заказ</a>
+    </div>
 
 @endsection
