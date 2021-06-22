@@ -32,6 +32,8 @@
         background: #fff;
         box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
         margin-bottom: 45px;
+        padding: 0 15px;
+        text-align: center;
     }
     .header a {
         display: inline-flex;
@@ -45,6 +47,10 @@
     }
     .header a:last-child {
         margin-right: 0;
+    }
+    .header .a_green {
+        font-weight: bold;
+        color: green;
     }
 
     .content {
@@ -65,7 +71,9 @@
         text-align: right;
     }
 
-    input[type=text] {
+    input[type=text],
+    input[type=email],
+    input[type=password]{
         display: block;
         width: 100%;
         max-width: 250px;
