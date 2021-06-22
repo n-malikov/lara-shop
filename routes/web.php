@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes([
+    'reset'   => false, // обрезаем лишние функции
+    'confirm' => false, // два раза shift для поиска классов
+    'verify'  => false,
+]);
+Route::get('/logout', 'Auth\LoginController@logout')->name('get-logout'); // ВМЕСТЕ С ПУТЕМ!
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/', 'MainController@index')->name('index');
 Route::get('/shop', 'MainController@shop')->name('shop');
 
@@ -26,3 +35,11 @@ Route::get('/categories', 'MainController@categories')->name('categories');
 Route::get('/{category}', 'MainController@category')->name('category');
 Route::get('/{category}/{product?}', 'MainController@product')->name('product');
 
+
+//Auth::routes();
+//
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//
+//Auth::routes();
+//
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
