@@ -20,7 +20,14 @@ Auth::routes([
 ]);
 Route::get('/logout', 'Auth\LoginController@logout')->name('get-logout'); // ВМЕСТЕ С ПУТЕМ!
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::group(['middleware' => 'auth'], function () {
+Route::group([
+    'middleware' => 'auth',
+    'namespace' => 'Admin',
+], function () {
+    // auth можно глянуть в /app/Http/Kernel.php
+    Route::get('/orders', 'OrderController@index')->name('home');
+});
 
 Route::get('/', 'MainController@index')->name('index');
 Route::get('/shop', 'MainController@shop')->name('shop');
