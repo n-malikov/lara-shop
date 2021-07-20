@@ -22,21 +22,32 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('get-logout'); // В�
 
 //Route::group(['middleware' => 'auth'], function () {
 Route::group([
+    // auth можно глянуть в /app/Http/Kernel.php
     'middleware' => 'auth',
     'namespace' => 'Admin',
 ], function () {
-    // auth можно глянуть в /app/Http/Kernel.php
-    Route::get('/orders', 'OrderController@index')->name('home');
+    // is_admin так же в Kernel.php
+    Route::group(['middleware' => 'is_admin'], function (){
+        Route::get('/orders', 'OrderController@index')->name('home');
+    });
 });
 
 Route::get('/', 'MainController@index')->name('index');
 Route::get('/shop', 'MainController@shop')->name('shop');
 
-Route::get('/basket', 'BasketController@basket')->name('basket');
-Route::get('/basket/place', 'BasketController@basketPlace')->name('basket-place');
-Route::post('/basket/add/{id}', 'BasketController@basketAdd')->name('basket-add');
-Route::post('/basket/remove/{id}', 'BasketController@basketRemove')->name('basket-remove');
-Route::post('/basket/place', 'BasketController@basketConfirm')->name('basket-confirm'); // подтверждение заказа
+// работа с корзиной
+Route::group(['prefix' => 'basket'], function () { // префиксом облегчаем код
+
+    Route::post('/add/{id}', 'BasketController@basketAdd')->name('basket-add');
+
+    Route::group(['middleware' => 'basket_not_empty'], function () {
+        Route::get('/', 'BasketController@basket')->name('basket');
+        Route::get('/place', 'BasketController@basketPlace')->name('basket-place');
+        Route::post('/remove/{id}', 'BasketController@basketRemove')->name('basket-remove');
+        Route::post('/place', 'BasketController@basketConfirm')->name('basket-confirm'); // подтверждение заказа
+    });
+
+});
 
 Route::get('/categories', 'MainController@categories')->name('categories');
 Route::get('/{category}', 'MainController@category')->name('category');
