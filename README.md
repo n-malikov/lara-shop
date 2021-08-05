@@ -1,3 +1,17 @@
+## Установка
+
+<code>cp .env.example .env</code> Отредачить .env
+<br/>
+<code>composer install</code>
+<br/>
+<code>sudo chmod -R 777 storage</code> тут я не уверен
+<br/>
+<code>php artisan key:generate</code>
+<br/>
+<code>php artisan migrate</code>
+
+# Далее не нужно, это от сборки Артема
+
 ## Установка проекта
 1. `cp .env.example .env`
     1. APP_URL = тот url c которого надо проксить сайт
