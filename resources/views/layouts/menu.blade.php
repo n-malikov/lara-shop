@@ -10,8 +10,10 @@
     @endguest
 
     @auth
-        <a href="{{ route('home') }}" class="a_green">Админка</a>
         <a href="{{ route('get-logout') }}" class="a_green">Выйти</a>
+        <br>
+        <a href="{{ route('home') }}" class="a_green">Админка</a>
+        <a href="{{ route('categories.index') }}" class="a_green">Категории</a>
     @endauth
 
 </div>
