@@ -25,11 +25,16 @@ Route::group([
     // auth можно глянуть в /app/Http/Kernel.php
     'middleware' => 'auth',
     'namespace' => 'Admin',
+    'prefix' => 'admin'
 ], function () {
     // is_admin так же в Kernel.php
     Route::group(['middleware' => 'is_admin'], function (){
         Route::get('/orders', 'OrderController@index')->name('home');
     });
+    // редактирование категорий
+    Route::resource('categories', 'CategoryController');
+
+    // Route::post(); - так мы можем добавить маршрут для POST данных, если нужно
 });
 
 Route::get('/', 'MainController@index')->name('index');
