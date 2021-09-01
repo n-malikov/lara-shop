@@ -14,6 +14,7 @@
         <br>
         <a href="{{ route('home') }}" class="a_green">Админка</a>
         <a href="{{ route('categories.index') }}" class="a_green">Категории</a>
+        <a href="{{ route('products.index') }}" class="a_green">Продукты</a>
     @endauth
 
 </div>

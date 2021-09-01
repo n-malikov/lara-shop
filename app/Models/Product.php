@@ -13,6 +13,11 @@ class Product extends Model
 //        return $category = Category::find($this->category_id);
 //    }
 
+    // избегаем ошибку:
+    // Add [code] to fillable property to allow mass assignment on [App\Models\Category].
+    // при отправке формы сюда
+    protected $fillable = ['code', 'name', 'category_id', 'description', 'price'];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
