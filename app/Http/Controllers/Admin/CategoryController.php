@@ -15,6 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        // ДЛЯ СОЗДАНИЯ ШАБЛОНА (7 ФУНКЦИЙ) ЭТОГО КОНТРОЛЛЕРА ИСПОЛЬЗОВАЛОСЬ php artisan make:controller Admin/CategoryController --resource --model=Category
         $categories = Category::get();
         return view('auth.categories.index', compact('categories'));
     }

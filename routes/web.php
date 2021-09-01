@@ -33,6 +33,8 @@ Route::group([
     });
     // редактирование категорий
     Route::resource('categories', 'CategoryController');
+    // редактирование товаров
+    Route::resource('products', 'ProductController');
 
     // Route::post(); - так мы можем добавить маршрут для POST данных, если нужно
 });

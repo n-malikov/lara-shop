@@ -18,7 +18,7 @@
     }
 
     .container {
-        width: 720px;
+        width: 799px;
         max-width: 100%;
         margin: 0 auto;
     }
@@ -74,7 +74,8 @@
     input[type=text],
     input[type=email],
     input[type=password],
-    textarea {
+    textarea,
+    select {
         display: block;
         width: 100%;
         max-width: 250px;

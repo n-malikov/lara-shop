@@ -9,7 +9,7 @@
     <table class="table">
         <thead>
         <tr>
-            <th>#</th>
+            <th width="40px">#</th>
             <th>Код</th>
             <th>Название</th>
             <th>Действия</th>
@@ -34,7 +34,6 @@
                             @csrf
                             @method('DELETE')
                             <input type="submit" class="button" value="Удалить">
-
                         </form>
 
                     </td>
