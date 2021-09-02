@@ -36,6 +36,12 @@
     {{ $product->price }}
     <br><br>
 
+    <strong>Изображение</strong>
+    <br>
+    {{-- Storage генерит ссылку по значению APP_URL в .env --}}
+    <img src="{{ Storage::url($product->image) }}" height="100px">
+    <br><br>
+
 
 
 @endsection
