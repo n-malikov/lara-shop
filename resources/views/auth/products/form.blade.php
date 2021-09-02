@@ -56,7 +56,13 @@
         Цена
         <input type="text" name="price" required value="@isset($product){{ $product->price }}@endisset">
 
-        <br>
+        Изображение<br>
+        <input type="file" name="image">
+        @if(isset($product) && isset($product->image))
+            <br><br><img src="{{ Storage::url($product->image) }}" height="100px">
+        @endif
+
+        <br><br>
 
         @csrf
         <button type="submit" class="button">Сохранить</button>

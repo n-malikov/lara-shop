@@ -39,7 +39,13 @@
         Описание
         <textarea name="description">@isset($category){{ $category->description }}@endisset</textarea>
 
-        <br>
+        Изображение<br>
+        <input type="file" name="image">
+        @if(isset($category) && isset($category->image))
+            <br><br><img src="{{ Storage::url($category->image) }}" height="100px">
+        @endif
+
+        <br><br>
 
         @csrf
         <button type="submit" class="button">Сохранить</button>

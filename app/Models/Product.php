@@ -16,7 +16,7 @@ class Product extends Model
     // избегаем ошибку:
     // Add [code] to fillable property to allow mass assignment on [App\Models\Category].
     // при отправке формы сюда
-    protected $fillable = ['code', 'name', 'category_id', 'description', 'price'];
+    protected $fillable = ['code', 'name', 'category_id', 'description', 'price', 'image'];
 
     public function category()
     {

@@ -31,6 +31,12 @@
     {{ $category->products->count() }}
     <br><br>
 
+    <strong>Изображение</strong>
+    <br>
+    {{-- Storage генерит ссылку по значению APP_URL в .env --}}
+    <img src="{{ Storage::url($category->image) }}" height="100px">
+    <br><br>
+
 
 
 @endsection
