@@ -31,12 +31,15 @@
         @endisset
 
         Код
-        <input type="text" name="code" required autofocus value="@isset($category){{ $category->code }}@endisset">
+        @error('code') <span class="error">{{ $message }}</span> @enderror
+        <input type="text" name="code" {{-- required --}} autofocus value="@isset($category){{ $category->code }}@endisset">
 
         Название
-        <input type="text" name="name" required value="@isset($category){{ $category->name }}@endisset">
+        @error('name') <span class="error">{{ $message }}</span> @enderror
+        <input type="text" name="name" {{-- required --}} value="@isset($category){{ $category->name }}@endisset">
 
         Описание
+        @error('description') <span class="error">{{ $message }}</span> @enderror
         <textarea name="description">@isset($category){{ $category->description }}@endisset</textarea>
 
         Изображение<br>

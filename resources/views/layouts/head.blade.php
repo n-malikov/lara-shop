@@ -71,6 +71,11 @@
         text-align: right;
     }
 
+    .error {
+        padding-left: 10px;
+        color: orange;
+    }
+
     input[type=text],
     input[type=email],
     input[type=password],
