@@ -78,12 +78,15 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
-        Storage::delete($category->image); // удаляем старый файл
-        $path = $request->file('image')->store('categories');
         $params = $request->all(); // собираем все что прилетело из POST
-        $params['image'] = $path; // подменяем сгенерированным
+        unset($params['image']);
+        if ($request->has('image') ) {
+            Storage::delete($category->image); // удаляем старый файл
+            $path = $request->file('image')->store('categories');
+            $params['image'] = $path; // подменяем сгенерированным
+        }
         $category->update($params);
         return redirect()->route('categories.index');
     }

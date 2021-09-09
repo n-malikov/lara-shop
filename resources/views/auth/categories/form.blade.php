@@ -32,15 +32,18 @@
 
         Код
         @error('code') <span class="error">{{ $message }}</span> @enderror
-        <input type="text" name="code" {{-- required --}} autofocus value="@isset($category){{ $category->code }}@endisset">
+        <input type="text" name="code" {{-- required --}} autofocus
+                {{-- с помощью "old" подставляем введенное значение пользователем --}}
+                value="{{ old('code', isset($category) ? $category->code : null ) }}"
+        >
 
         Название
         @error('name') <span class="error">{{ $message }}</span> @enderror
-        <input type="text" name="name" {{-- required --}} value="@isset($category){{ $category->name }}@endisset">
+        <input type="text" name="name" {{-- required --}} value="{{ old('name', isset($category) ? $category->name : null ) }}">
 
         Описание
         @error('description') <span class="error">{{ $message }}</span> @enderror
-        <textarea name="description">@isset($category){{ $category->description }}@endisset</textarea>
+        <textarea name="description">{{ old('description', isset($category) ? $category->description : null ) }}</textarea>
 
         Изображение<br>
         <input type="file" name="image">

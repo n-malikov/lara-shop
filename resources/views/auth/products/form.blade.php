@@ -31,10 +31,15 @@
         @endisset
 
         Код
-        <input type="text" name="code" required autofocus value="@isset($product){{ $product->code }}@endisset">
+        @error('code') <span class="error">{{ $message }}</span> @enderror
+        <input type="text" name="code" {{-- required --}} autofocus
+               {{-- с помощью "old" подставляем введенное значение пользователем --}}
+               value="{{ old('code', isset($product) ? $product->code : null ) }}"
+        >
 
         Название
-        <input type="text" name="name" required value="@isset($product){{ $product->name }}@endisset">
+        @error('name') <span class="error">{{ $message }}</span> @enderror
+        <input type="text" name="name" {{-- required --}} value="{{ old('name', isset($product) ? $product->name : null ) }}">
 
         Категория
         <select name="category_id">
@@ -51,10 +56,12 @@
         </select>
 
         Описание
-        <textarea name="description">@isset($product){{ $product->description }}@endisset</textarea>
+        @error('description') <span class="error">{{ $message }}</span> @enderror
+        <textarea name="description">{{ old('description', isset($product) ? $product->description : null ) }}</textarea>
 
         Цена
-        <input type="text" name="price" required value="@isset($product){{ $product->price }}@endisset">
+        @error('price') <span class="error">{{ $message }}</span> @enderror
+        <input type="text" name="price" {{-- required --}} value="{{ old('price', isset($product) ? $product->price : null ) }}">
 
         Изображение<br>
         <input type="file" name="image">

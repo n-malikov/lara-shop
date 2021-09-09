@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -39,7 +40,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         $path = $request->file('image')->store('products');
         $params = $request->all(); // собираем все что прилетело из POST
@@ -80,12 +81,15 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        Storage::delete($product->image); // удаляем старый файл
-        $path = $request->file('image')->store('products');
         $params = $request->all(); // собираем все что прилетело из POST
-        $params['image'] = $path; // подменяем сгенерированным
+        unset($params['image']);
+        if ($request->has('image') ) {
+            Storage::delete($product->image); // удаляем старый файл
+            $path = $request->file('image')->store('products');
+            $params['image'] = $path; // подменяем сгенерированным
+        }
         $product->update($params);
         return redirect()->route('products.index');
     }
