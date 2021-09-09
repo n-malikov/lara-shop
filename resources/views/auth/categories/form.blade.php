@@ -31,13 +31,19 @@
         @endisset
 
         Код
-        <input type="text" name="code" required autofocus value="@isset($category){{ $category->code }}@endisset">
+        @error('code') <span class="error">{{ $message }}</span> @enderror
+        <input type="text" name="code" {{-- required --}} autofocus
+                {{-- с помощью "old" подставляем введенное значение пользователем --}}
+                value="{{ old('code', isset($category) ? $category->code : null ) }}"
+        >
 
         Название
-        <input type="text" name="name" required value="@isset($category){{ $category->name }}@endisset">
+        @error('name') <span class="error">{{ $message }}</span> @enderror
+        <input type="text" name="name" {{-- required --}} value="{{ old('name', isset($category) ? $category->name : null ) }}">
 
         Описание
-        <textarea name="description">@isset($category){{ $category->description }}@endisset</textarea>
+        @error('description') <span class="error">{{ $message }}</span> @enderror
+        <textarea name="description">{{ old('description', isset($category) ? $category->description : null ) }}</textarea>
 
         Изображение<br>
         <input type="file" name="image">

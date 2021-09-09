@@ -9,6 +9,8 @@
 <code>php artisan key:generate</code>
 <br/>
 <code>php artisan migrate</code>
+<br/>
+<code>php artisan storage:link</code>
 
 # Далее не нужно, это от сборки Артема
 
