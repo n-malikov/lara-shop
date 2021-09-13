@@ -1,12 +1,12 @@
 <div class="header">
-    <a href="{{ route('index') }}">Главная</a>
-    <a href="{{ route('shop') }}">Магазин</a>
-    <a href="{{ route('categories') }}">Категории</a>
-    <a href="{{ route('basket') }}">Корзина</a>
+    <a href="{{ route('index') }}" @routeactive('index')>Главная</a>
+    <a href="{{ route('shop') }}" @routeactive('shop')>Магазин</a>
+    <a href="{{ route('categories') }}" @routeactive('categories')>Категории</a>
+    <a href="{{ route('basket') }}" @routeactive('basket')>Корзина</a>
 
     @guest
-        <a href="{{ route('login') }}">Вход</a>
-        <a href="{{ route('register') }}">Регистрация</a>
+        <a href="{{ route('login') }}" @routeactive('login')>Вход</a>
+        <a href="{{ route('register') }}" @routeactive('register')>Регистрация</a>
     @endguest
 
     @auth
