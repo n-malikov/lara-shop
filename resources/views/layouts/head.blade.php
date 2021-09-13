@@ -42,6 +42,9 @@
         margin-right: 30px;
         color: #737373;
     }
+    .header a.active {
+        text-decoration: underline;
+    }
     .header a:hover {
         color: #33691e;
     }
